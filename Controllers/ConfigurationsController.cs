@@ -239,10 +239,10 @@ public class ConfigurationsController : ControllerBase
     {
         var author = new Author
         {
-            FullName = "İlber Ortaylı",
-            BiographyEn = @"İlber Ortaylı is a Turkish historian, writer and academic born in Vienna on July 4, 1947. After studying at Ankara University Faculty of Languages, History and Geography, he completed his doctorate on Medieval and Modern History at Paris-Sorbonne University. Ortaylı, who is considered one of the important historians of Turkey, is especially known for his studies on the history of the Ottoman Empire and his popular history books. In addition, he gave lectures at various universities and instilled historical awareness in large audiences with national television programs. İlber Ortaylı, known for his knowledge of languages and deep history, is known as one of the important names in the field of history in Turkey.",
-            BiographyTr = @"İlber Ortaylı, 4 Temmuz 1947 tarihinde Viyana'da doğan Türk tarihçi, yazar ve akademisyendir. Ankara Üniversitesi Dil ve Tarih-Coğrafya Fakültesi'nde öğrenim gördükten sonra, Paris-Sorbonne Üniversitesi'nde Ortaçağ ve Yakınçağ Tarihi üzerine doktorasını tamamlamıştır. Türkiye'nin önemli tarihçilerinden biri olarak kabul edilen Ortaylı, özellikle Osmanlı İmparatorluğu tarihi üzerine yaptığı çalışmalar ve popüler tarih kitaplarıyla tanınır. Ayrıca, çeşitli üniversitelerde dersler vermiş ve ulusal-televizyon programlarıyla geniş kitlelere tarih bilinci aşılamıştır. Dil bilgisi ve derin tarih bilgisiyle tanınan İlber Ortaylı, Türkiye'de tarih alanındaki önemli isimlerden biri olarak bilinmektedir.",
-            ProfilePhotoImgUrl = "https://yt3.googleusercontent.com/ytc/APkrFKY_Y8RfewUFjc6JcVxtciOMCaF85QAw8Pgbe6sE=s900-c-k-c0x00ffffff-no-rj"
+            FullName = @"Rachel Abbott",
+            BiographyEn = @"Rachel Abbott is a British author and successful creator of bestselling psychological thriller novels. Abbott began his previous career as an executive in business and technology, but focused on writing after his retirement. His first novel, ""Only the Innocent"" (2011), was a huge international success and made Abbott a household name in the literary world. His works, which stand out with character development, gripping stories and unexpected twists, draw their readers into the depths of the thriller genre. By combining her passion for writing with her dedication to exploring complex relationships and the darker aspects of human nature, Abbott has forged her own brand in the psychological thriller genre.",
+            BiographyTr = @"Rachel Abbott, İngiliz yazar ve çok satan psikolojik gerilim romanlarının başarılı bir yaratıcısıdır. Abbott, önceki kariyerine ticaret ve teknoloji alanında yöneticilik yaparak başlamış, ancak emekliliğinden sonra yazmaya odaklanmıştır. İlk romanı olan ""Only the Innocent"" (2011), uluslararası alanda büyük bir başarı elde etti ve Abbott'u edebi dünyada tanınan bir isim haline getirdi. Karakter gelişimi, sürükleyici hikayeler ve beklenmedik twist'lerle dikkat çeken eserleri, okuyucularını gerilim türünün derinliklerine çekiyor. Abbott, yazma tutkusunu, karmaşık ilişkileri ve insan doğasının karanlık yönlerini keşfetmeye olan bağlılığıyla birleştirerek, psikolojik gerilim türünde kendi markasını oluşturdu.",
+            ProfilePhotoImgUrl = "https://m.media-amazon.com/images/S/amzn-author-media-prod/fv4v7cjf0766c96baua29u1ede._SY1000_CR0%2C0%2C1000%2C1000_.jpg"
         };
         _context.Authors.Add(author);
         _context.SaveChanges();
@@ -267,22 +267,26 @@ public class ConfigurationsController : ControllerBase
 
         var book = new Book
         {
-            AuthorId = _context.Authors.Where(p=>p.FullName == "İlber Ortaylı").FirstOrDefault().Id,
-            TitleTr = "Cumhuriyet’in Doğuşu: Kurtuluş ve Kuruluş Yılları",
-            TitleEn = "Birth of the Republic: Years of Independence and Foundation",
-            SubTitleTr = @"İLBER ORTAYLI'NIN KALEMİNDEN KURTULUŞ VE KURULUŞ YILLARI
-""Türkiye Cumhuriyeti'ni kuran insanlar basit maceracılar, küskünler veya kendine yer arayanlar değildir. Her birinin imparatorlukta komutan olarak, bürokrat olarak, münevver olarak seçkin bir yeri zaten vardı. Türkiye Cumhuriyeti'ni kuran insanların idealini takip etmemiz gerekiyor. Çünkü onlar devrin modası olan demokrasi düşmanlığına değil, kurdukları cumhuriyetin demokrasi niyetli bir devlet olarak devamına çalıştılar. Hepsini şükranla anıyoruz ve anmalıyız.""
-- İlber Ortaylı",
-            SubTitleEn = @"THE YEARS OF Liberation AND FOUNDATION FROM THE PEN OF İLBER ORTAYLI
-""The people who founded the Republic of Turkey were not simple adventurers, resentful people, or those looking for a place for themselves. Each of them already had a distinguished place in the empire as commanders, bureaucrats, and intellectuals. We need to follow the ideals of the people who founded the Republic of Turkey. Because they were the fashionable people of the time."" ""They worked not for hostility towards democracy, but for the continuation of the republic they founded as a state with democratic intentions. We remember and should remember all of them with gratitude.""
-- İlber Ortaylı",
-            MainImgUrl = "https://m.media-amazon.com/images/I/719G9fwtWdL._SL1200_.jpg",
-            ISBN = "6256774019",
+            AuthorId = _context.Authors.Where(p=>p.FullName == "Rachel Abbott").FirstOrDefault().Id,
+            TitleTr = "Hiçbir Yerde Çocuk: Kısa Bir Roman",
+            TitleEn = "Nowhere Child: A Short Novel",
+            SubTitleTr = @"Rachel Abbott'un çok satan romanı Yabancı Çocuk Birisi Tasha'yı Arıyor'la aynı karakterlerin yer aldığı bağımsız bir kısa roman. Ama bulunmayı istiyor mu? Sekiz ay önce Tasha Joseph kaçtı ve üvey annesi Emma o zamandan beri onu arıyor. Tasha'ya hak ettiği evi ve güvenliği vermek konusunda çaresizdir. Sorun şu ki, Tasha'yı arayan tek kişi Emma değil. Polis de onu bulmaya çalışıyor. Bir ceza davasında hayati bir tanık olabilir ve DCI Tom Douglas'ın sürekli olarak onu gözetleyen bir ekibi var.",
+            SubTitleEn = @"A stand-alone novella featuring the same characters as Rachel Abbott’s bestselling novel Stranger Child Someone is looking for Tasha. But does she want to be found? Eight months ago Tasha Joseph ran away, and her stepmother, Emma, has been searching for her ever since. She is desperate to give Tasha the home and security she deserves. The problem is, Emma isn’t the only one looking for Tasha. The police are keen to find her too. She could be a vital witness in a criminal trial, and DCI Tom Douglas has a team constantly on the lookout for her.",
+            MainImgUrl = "https://m.media-amazon.com/images/I/7139zSoVSWL._SL1360_.jpg",
+            ISBN = "0957652259",
             Quantity = 100,
-            DescriptionEn = @"The book ""Birth of the Republic: Years of Independence and Foundation"" is a reference book that deals in depth with the birth and founding years of the Republic, which was a turning point in Turkey's history. This work, written by İlber Ortaylı, presents from an illuminating perspective the period in which the collapse of the Ottoman Empire, the victory of the War of Independence, and the foundations of the Republic of Turkey were laid. Written with detailed research, rich historical information and a fluent style, the book offers readers a unique opportunity to understand the Turkish nation's struggle for independence and the birth of a new state. ""The Birth of the Republic"" offers a resource for history enthusiasts, students and everyone who wants to get in-depth information about important periods of Turkey.",
+            DescriptionEn = @"""Nowhere Child: A Short Novel"" is a captivating literary journey that seamlessly blends mystery and emotion. In this concise yet compelling narrative, readers are immersed in a tale that transcends boundaries and explores the depths of human connection. Set against a backdrop of intrigue and self-discovery, the story unfolds with a poetic cadence, drawing readers into the protagonist's quest for identity and belonging.
+
+This short novel is not merely a story; it's a reflection on the universal themes of family, loss, and resilience. As you navigate the pages, you'll find yourself on a poignant exploration of the human spirit, contemplating the significance of our roots and the profound impact of personal history.
+
+""Nowhere Child"" is a literary gem that leaves an indelible mark, making it a must-read for those who seek narratives that resonate on a profound level. This short novel is not just about a character's journey; it's an exploration of the shared human experience, beautifully crafted to linger in the reader's mind long after the final page is turned.",
 
 
-            DescriptionTr = @"""Cumhuriyet’in Doğuşu: Kurtuluş ve Kuruluş Yılları"" kitabı, Türkiye'nin tarihinde kırılma noktası olan Cumhuriyet'in doğuşunu ve kuruluş yıllarını derinlemesine ele alan bir başvuru kitabıdır. İlber Ortaylı'nın kaleminden çıkan bu eser, Osmanlı İmparatorluğu'nun çöküşü, Kurtuluş Savaşı'nın zaferle sonuçlanması ve Türkiye Cumhuriyeti'nin temellerinin atıldığı dönemi aydınlatıcı bir bakış açısıyla sunar. Detaylı araştırmalar, zengin tarih bilgisi ve akıcı bir üslupla kaleme alınan kitap, okuyuculara Türk milletinin bağımsızlık mücadelesini ve yeni bir devletin doğuşunu anlamak için benzersiz bir fırsat sunar. ""Cumhuriyet’in Doğuşu"", tarih meraklılarına, öğrencilere ve herkesin Türkiye'nin önemli dönemlerine dair derinlemesine bilgi edinmek istediği bir kaynak sunmaktadır.",
+            DescriptionTr = @"""Hiçbir Yerde Çocuk: Kısa Bir Roman"" gizemi ve duyguyu kusursuz bir şekilde harmanlayan büyüleyici bir edebi yolculuk. Bu kısa ama ilgi çekici anlatımda okuyucular, sınırları aşan ve insanlar arasındaki bağın derinliklerini araştıran bir hikayenin içinde kayboluyorlar. Entrika ve kendini keşfetmenin arka planında yer alan hikaye şiirsel bir ritimle gelişiyor ve okuyucuları kahramanın kimlik ve aidiyet arayışına çekiyor.
+
+Bu kısa roman yalnızca bir hikaye değil; bu, aile, kayıp ve dayanıklılık gibi evrensel temaların bir yansımasıdır. Sayfalarda gezinirken, kendinizi insan ruhunun dokunaklı bir incelemesinde bulacaksınız, köklerimizin önemini ve kişisel tarihimizin derin etkisini düşünüyorsunuz.
+
+""Hiçbir Yerdeki Çocuk"" silinmez bir iz bırakan edebi bir mücevherdir ve derin düzeyde yankı uyandıran anlatılar arayanlar için mutlaka okunması gereken bir kitaptır. Bu kısa roman sadece bir karakterin yolculuğunu anlatmıyor; Bu, son sayfa çevrildikten çok sonra bile okuyucunun aklında kalacak şekilde güzelce hazırlanmış, paylaşılan insan deneyiminin bir keşfi.",
 
             
 
@@ -296,21 +300,21 @@ public class ConfigurationsController : ControllerBase
                             {
                                 new Price
                                 {
-                                    PriceAmount = 49.99m,
-                                    DiscountedPriceAmount = 39.99m,
+                                    PriceAmount = 69.99m,
+                                    DiscountedPriceAmount = 49.99m,
                                     PriceCurrency = "₺"
                                 }
                             },
                             ProductDetail = new ProductDetail
                             {
-                                FormatTr = "304 sayfa",
-                                FormatEn = "304 pages",
-                                Dimensions = "13 x 2 x 23 cm",
-                                PublicationDate = new DateTime(2023, 10, 23),
-                                PublisherTr = "Kronik Kitap; 1. basım",
-                                PublisherEn = "Chronicle Book; 1st edition",
-                                LanguageTr = "Türkçe",
-                                LanguageEn = "Turkish"
+                                FormatTr = "178 sayfa",
+                                FormatEn = "178 pages",
+                                Dimensions = "12.7 x 1.04 x 20.32 cm",
+                                PublicationDate = new DateTime(2015, 01, 29),
+                                PublisherTr = "Siyah Nokta Yayıncılık",
+                                PublisherEn = "Black Dot Publishing",
+                                LanguageTr = "İngilizce",
+                                LanguageEn = "English"
                             },
 
                         },
@@ -322,21 +326,21 @@ public class ConfigurationsController : ControllerBase
                             {
                                 new Price
                                 {
-                                    PriceAmount = 19.99m,
-                                    DiscountedPriceAmount = 9.99m,
+                                    PriceAmount = 39.99m,
+                                    DiscountedPriceAmount = 19.99m,
                                     PriceCurrency = "₺"
                                 }
                             },
                             ProductDetail = new ProductDetail
                             {
-                                FormatTr = "3 saat 49 dakika",
-                                FormatEn = "3 hours and 49 minutes",
-                                Dimensions = "13 x 2 x 23 cm",
-                                PublicationDate = new DateTime(2023, 10, 23),
-                                PublisherTr = "Kronik Kitap; 1. basım",
-                                PublisherEn = "Chronicle Book; 1st edition",
-                                LanguageTr = "Türkçe",
-                                LanguageEn = "Turkish"
+                                FormatTr = "3 saat 45 dakika",
+                                FormatEn = "3 hours and 45 minutes",
+                                Dimensions = "12.7 x 1.04 x 20.32 cm",
+                                PublicationDate = new DateTime(2015, 01, 29),
+                                PublisherTr = "Siyah Nokta Yayıncılık",
+                                PublisherEn = "Black Dot Publishing",
+                                LanguageTr = "İngilizce",
+                                LanguageEn = "English"
                             },
 
                         },
@@ -348,34 +352,36 @@ public class ConfigurationsController : ControllerBase
                             {
                                 new Price
                                 {
-                                    PriceAmount = 19.99m,
+                                    PriceAmount = 5.99m,
                                     //DiscountedPriceAmount = 44.99m,
                                     PriceCurrency = "₺"
                                 }
                             },
                             ProductDetail = new ProductDetail
                             {
-                                FormatTr = "351984 KB",
-                                FormatEn = "351984 KB",
-                                Dimensions = "13 x 2 x 23 cm",
-                                PublicationDate = new DateTime(2023, 10, 23),
-                                PublisherTr = "Kronik Kitap; 1. basım",
-                                PublisherEn = "Chronicle Book; 1st edition",
-                                LanguageTr = "Türkçe",
-                                LanguageEn = "Turkish"
+                                FormatTr = "604 KB",
+                                FormatEn = "604 KB",
+                                Dimensions = "12.7 x 1.04 x 20.32 cm",
+                                PublicationDate = new DateTime(2015, 01, 29),
+                                PublisherTr = "Siyah Nokta Yayıncılık",
+                                PublisherEn = "Black Dot Publishing",
+                                LanguageTr = "İngilizce",
+                                LanguageEn = "English"
                             },
 
                         },
                     },
             BookImgUrls = new List<BookImgUrl>
                     {
+                //mainImgUrl
                         new BookImgUrl
                         {
-                            ImgUrl = "https://static.nadirkitap.com/fotograf/999464/34/Kitap_2023102614415999946413.jpg"
+                            ImgUrl = "https://m.media-amazon.com/images/I/7139zSoVSWL._SL1360_.jpg"
                         },
+                //mainImgUrl
                         new BookImgUrl
                         {
-                            ImgUrl = "https://s3.cloud.ngn.com.tr/kitantik/images/2023-11-07/1br9qfwlon7mfki1j3u.jpg"
+                            ImgUrl = "https://m.media-amazon.com/images/I/718RCgJRSgL._SL1360_.jpg"
                         },
                         //new BookImgUrl
                         //{
@@ -388,41 +394,75 @@ public class ConfigurationsController : ControllerBase
                     },
             BookVideoUrls = new List<BookVideoUrl>
                     {
-                        new BookVideoUrl
-                        {
-                            CoverImgUrl = "https://i.ytimg.com/vi/dZbGovqBQmU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBAsIvgM7lAx3el6RmSEPO4X76vWA",
-                            VideoUrl="https://www.youtube.com/embed/dZbGovqBQmU?si=hNJuHZ5b8O1Yzm-y",
-                        },
-                        //new BookVideoUrl
-                        //{
-                        //    CoverImgUrl ="https://i.ytimg.com/vi/g8wkulcRPTY/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDpr_ZNJLhzb-mneGlEmC6-SQimnQ",
-                        //    VideoUrl = "https://www.youtube.com/embed/g8wkulcRPTY?si=nnnW_BGPURsuttOM",
-                        //},
+                new BookVideoUrl
+                {
+                    CoverImgUrl = "https://i.ytimg.com/vi/5s0HY5D-Y5M/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAhGTYt5s1NuWRddOOcRMEuvqPeBw",
+                    VideoUrl="https://www.youtube.com/embed/5s0HY5D-Y5M?si=fyWYS_dhg7knTemp",
+                },
+                //new BookVideoUrl
+                //{
+                //    CoverImgUrl ="https://i.ytimg.com/vi/g8wkulcRPTY/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDpr_ZNJLhzb-mneGlEmC6-SQimnQ",
+                //    VideoUrl = "https://www.youtube.com/embed/g8wkulcRPTY?si=nnnW_BGPURsuttOM",
+                //},
 
-                    },
+            },
             BookReviews = new List<BookReview>
                     {
                         new BookReview
                         {
                             UserId = randomUser.Id,
-                            CommentTitleEn = "It arrived undamaged",
-                            CommentTitleTr = "Hasarsız geldi",
-                            CommentEn = @"I love our teacher Ilber's books, they arrived intact.",
+                            CommentTitleEn = "Such an excellent fast paced read.",
+                            CommentTitleTr = "Böyle mükemmel, hızlı tempolu bir okuma.",
+                            CommentEn = @"Characters are vivid and the way Rachel writes it's easy to identify relationips and the emotions being experienced between people.",
 
 
-                            CommentTr = @"ilber hocamızın kitaplarını seviyorum sağlam geldi",
+                            CommentTr = @"Karakterler canlıdır ve Rachel'ın yazma şekli, insanlar arasında yaşanan ilişkileri ve duyguları tanımlamak kolaydır.",
                             Raiting = 5,
                             CreatedAt = DateTime.Now,
                         },
                         new BookReview
                         {
                             UserId = randomUser.Id,
-                            CommentTitleEn = "story of salvation",
-                            CommentTitleTr = "Kurtuluşun hikayesi",
-                            CommentEn = @"İlber Ortaylı has made his pen speak louder again. 100 years of history of the Republic.",
+                            CommentTitleEn = "Tasha's story continues",
+                            CommentTitleTr = "Tasha'nın hikayesi devam ediyor",
+                            CommentEn = @"This novella by Rachel Abbott picks up the story of Tasha Joseph where Stranger Child left off. Tasha is on the run, certain that her family hate her for what happened to little Ollie and knowing that if she stays still, her old family, the gang she used to work for, will find her. The best she could hope for would be to put to work in a brothel, the worst could mean her death. People are searching for her, but she doesn’t know if the are friend or foe and she cannot take any chances. Her only option is to stay hidden.
+
+This is a great short story in which we learn more about Tasha, about the life she is living now on the streets and that which she lived before; under the control of the gang that used her for shoplifting and drug running. She is a feisty character for sure, but she is also just a teenager and she is scared. Having spent so long being beaten down she sees nothing good in herself and although she has found a friend on the streets, she will never truly be safe.
+
+Tapping into the plight of the homeless people of Manchester, Rachel Abbott manages to create a tense, compelling and fraught read which feels authentic but also ties up a lot of loose ends for both Tasha and Emma. I really felt for Tasha, and some sections were hard to read, or in m case listen to as I chose the audio book option, but it was still compelling. Although this isn’t really a Tom Douglas story he does still feature, albeit in a much smaller role. Still, it’s nice to see him stop by. And the ending brings hope for both Emma and Tasha. Whether we hear from either again I don’t know but they are going to be characters that are hard to forget.",
 
 
-                            CommentTr = @"İlber Ortaylı yine kalemini konuşturmuş. Cumhuriyet'in 100 yıllık tarihi.",
+                            CommentTr = @"Rachel Abbott'un bu kısa romanı, Tasha Joseph'in hikayesini Yabancı Çocuk'un bıraktığı yerden devam ettiriyor. Tasha kaçmaktadır, küçük Ollie'nin başına gelenlerden dolayı ailesinin ondan nefret ettiğinden emindir ve hareketsiz kalırsa eski ailesinin, yani eskiden çalıştığı çetenin onu bulacağını bilir. Umabileceği en iyi şey bir genelevde çalışmaya başlamaktı, en kötüsü ise ölümü anlamına gelebilirdi. İnsanlar onu arıyor ama o, onların dost mu düşman mı olduğunu bilmiyor ve işini şansa bırakamaz. Tek seçeneği gizli kalmaktır.
+
+Bu, Tasha hakkında, şu anda sokaklarda yaşadığı ve daha önce yaşadığı hayat hakkında daha fazla şey öğrendiğimiz harika bir kısa hikaye; Onu hırsızlık ve uyuşturucu kaçakçılığı için kullanan çetenin kontrolü altında. Kesinlikle alıngan bir karakter ama aynı zamanda henüz bir genç ve korkuyor. O kadar uzun süre dövüldükten sonra kendinde iyi bir şey göremiyor ve sokaklarda bir arkadaş bulsa da hiçbir zaman tam anlamıyla güvende olamayacak.
+
+Manchester'daki evsizlerin içinde bulunduğu kötü duruma değinen Rachel Abbott, hem Tasha hem de Emma için gerçekçi hissettiren ama aynı zamanda pek çok yarım kalmış işi de bağlayan gergin, ilgi çekici ve endişe verici bir okuma yaratmayı başarıyor. Tasha'yı gerçekten hissettim ve bazı bölümleri okumak ya da sesli kitap seçeneğini seçtiğim için dinlemek zordu ama yine de ilgi çekiciydi. Her ne kadar bu aslında bir Tom Douglas hikayesi olmasa da, çok daha küçük bir rolle de olsa hâlâ öne çıkıyor. Yine de onun uğradığını görmek güzel. Ve sonu hem Emma'ya hem de Tasha'ya umut veriyor. İkisinden de bir daha haber alır mıyız bilmiyorum ama unutulması zor karakterler olacaklar.",
+                            Raiting = 4,
+                            CreatedAt = DateTime.Now,
+                        },
+                        new BookReview
+                        {
+                            UserId = randomUser.Id,
+                            CommentTitleEn = "Excellent",
+                            CommentTitleTr = "Harika",
+                            CommentEn = @"Not been able to put down any of this author's book's. They are some of the best ones I have read.",
+
+
+                            CommentTr = @"Bu yazarın hiçbir kitabını elimden bırakamadım. Onlar okuduklarım arasında en iyilerinden bazıları.",
+                            Raiting = 5,
+                            CreatedAt = DateTime.Now,
+                        },
+                        new BookReview
+                        {
+                            UserId = randomUser.Id,
+                            CommentTitleEn = "Awsome",
+                            CommentTitleTr = "Süper",
+                            CommentEn = @"This 2nd book about Tom ,Emma and Rasta was worth reading a conclusion to A terrible story of a child's life after her mother dies .
+Really enjoying this series",
+
+
+                            CommentTr = @"Tom, Emma ve Rasta hakkındaki bu 2. kitap, Annesi öldükten sonra bir çocuğun hayatının korkunç hikayesinin bir sonucu olarak okunmaya değerdi.
+Bu seriden gerçekten keyif alıyorum",
                             Raiting = 5,
                             CreatedAt = DateTime.Now,
                         }
@@ -439,12 +479,12 @@ public class ConfigurationsController : ControllerBase
             new BookCategory
             {
                 BookId = book.Id,
-                CategoryId = 1
+                CategoryId = 2
             },
             new BookCategory
             {
                 BookId = book.Id,
-                CategoryId = 2
+                CategoryId = 1
             }
         };
 
@@ -465,7 +505,9 @@ public class ConfigurationsController : ControllerBase
 
         await _context.SaveChangesAsync();
 
-        return Ok(_context.Books.ToListAsync());
+        var books = await _context.Books.ToListAsync();
+
+        return Ok(books);
     }
 
 
