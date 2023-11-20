@@ -267,26 +267,23 @@ public class ConfigurationsController : ControllerBase
 
         var book = new Book
         {
-            AuthorId = _context.Authors.Where(p=>p.FullName == "Rachel Abbott").FirstOrDefault().Id,
-            TitleTr = "Hiçbir Yerde Çocuk: Kısa Bir Roman",
-            TitleEn = "Nowhere Child: A Short Novel",
-            SubTitleTr = @"Rachel Abbott'un çok satan romanı Yabancı Çocuk Birisi Tasha'yı Arıyor'la aynı karakterlerin yer aldığı bağımsız bir kısa roman. Ama bulunmayı istiyor mu? Sekiz ay önce Tasha Joseph kaçtı ve üvey annesi Emma o zamandan beri onu arıyor. Tasha'ya hak ettiği evi ve güvenliği vermek konusunda çaresizdir. Sorun şu ki, Tasha'yı arayan tek kişi Emma değil. Polis de onu bulmaya çalışıyor. Bir ceza davasında hayati bir tanık olabilir ve DCI Tom Douglas'ın sürekli olarak onu gözetleyen bir ekibi var.",
-            SubTitleEn = @"A stand-alone novella featuring the same characters as Rachel Abbott’s bestselling novel Stranger Child Someone is looking for Tasha. But does she want to be found? Eight months ago Tasha Joseph ran away, and her stepmother, Emma, has been searching for her ever since. She is desperate to give Tasha the home and security she deserves. The problem is, Emma isn’t the only one looking for Tasha. The police are keen to find her too. She could be a vital witness in a criminal trial, and DCI Tom Douglas has a team constantly on the lookout for her.",
-            MainImgUrl = "https://m.media-amazon.com/images/I/7139zSoVSWL._SL1360_.jpg",
-            ISBN = "0957652259",
+            AuthorId = _context.Authors.Where(p=>p.FullName == "İlber Ortaylı").FirstOrDefault().Id,
+            TitleTr = "Gazi Mustafa Kemal Atatürk",
+            TitleEn = "Mustafa Kemal Atatürk, the Victorious",
+            SubTitleTr = @"""Tarihin akışını değiştiren, ona mührünü vuran veya büyük tehlikelere mani olan liderlere her memlekette rastlamak mümkün değildir. Atatürk dünya tarihinin nadiren gördüğü bir dehadır. Birinci Dünya Savaşı'ndan sonra, hiçbir mağlup milletin direniş göstermediği zamanda siviller ve askerlerle dünyaya meydan okumuştur.""
+              İLBER ORTAYLI",
+            SubTitleEn = @"The leaders who change the course of history, leave their mark on it, or prevent great dangers are not encountered in every country. Atatürk is a rare genius in world history. After the First World War, at a time when no defeated nation resisted, he defied the world with civilians and soldiers."" - İlber Ortaylı",
+            MainImgUrl = "https://m.media-amazon.com/images/I/51jUzMOHwkL._SL1000_.jpg",
+            ISBN = "9752430295",
             Quantity = 100,
-            DescriptionEn = @"""Nowhere Child: A Short Novel"" is a captivating literary journey that seamlessly blends mystery and emotion. In this concise yet compelling narrative, readers are immersed in a tale that transcends boundaries and explores the depths of human connection. Set against a backdrop of intrigue and self-discovery, the story unfolds with a poetic cadence, drawing readers into the protagonist's quest for identity and belonging.
+            DescriptionEn = @"On the back cover:
+All aspects of the life of the great leader Atatürk... 'It is not possible to encounter leaders in every country who change the course of history, leave their mark on it, or prevent great dangers. Atatürk is a rare genius in world history. After the First World War, at a time when no defeated nation resisted, he defied the world with civilians and soldiers.' - İlber Ortaylı
 
-This short novel is not merely a story; it's a reflection on the universal themes of family, loss, and resilience. As you navigate the pages, you'll find yourself on a poignant exploration of the human spirit, contemplating the significance of our roots and the profound impact of personal history.
-
-""Nowhere Child"" is a literary gem that leaves an indelible mark, making it a must-read for those who seek narratives that resonate on a profound level. This short novel is not just about a character's journey; it's an exploration of the shared human experience, beautifully crafted to linger in the reader's mind long after the final page is turned.",
+The book 'Gazi Mustafa Kemal Atatürk,' begins with the generation of the 1880s, the first to revive the empire, the Balkan geography, and Mustafa Kemal's family background. It then continues with Atatürk's military education, years in Manastır, the Period of Nationalism, the Committee of Union and Progress, Sultan Abdulhamid II, Enver Pasha, Ziya Gökalp, Trablusgarb, the Balkan Wars, and the years in Sofia. The First World War, in which our army fought on eight fronts against the Allied powers, the glorious victories of Çanakkale and Kutü’l Amâre, the Armistice of Mudros, the last Ottoman Sultan Vahideddin, and the death sentence for a nation and a country called Sevres... The entire period of the War of Independence in detail, the opposition against the Independence War given despite, the Battles of İnönü, the Lausanne Conference, the Great Offensive, and the path to the Republic... Debates on the sultanate and caliphate, Lausanne, the Twelve Islands, population exchange, debts left by the Ottoman Empire, Mosul, and the most important issues of recent history, revolutions... Lastly, with his personal qualities, the founder of modern Turkey, Atatürk, whose traces remain in the world, in memories, and in minds... In this first biography, İlber Ortaylı narrates the life of the great leader Mustafa Kemal Atatürk in all its aspects. He adds another guidebook to Turkish historiography that will never be forgotten and will be constantly referred to...",
 
 
-            DescriptionTr = @"""Hiçbir Yerde Çocuk: Kısa Bir Roman"" gizemi ve duyguyu kusursuz bir şekilde harmanlayan büyüleyici bir edebi yolculuk. Bu kısa ama ilgi çekici anlatımda okuyucular, sınırları aşan ve insanlar arasındaki bağın derinliklerini araştıran bir hikayenin içinde kayboluyorlar. Entrika ve kendini keşfetmenin arka planında yer alan hikaye şiirsel bir ritimle gelişiyor ve okuyucuları kahramanın kimlik ve aidiyet arayışına çekiyor.
-
-Bu kısa roman yalnızca bir hikaye değil; bu, aile, kayıp ve dayanıklılık gibi evrensel temaların bir yansımasıdır. Sayfalarda gezinirken, kendinizi insan ruhunun dokunaklı bir incelemesinde bulacaksınız, köklerimizin önemini ve kişisel tarihimizin derin etkisini düşünüyorsunuz.
-
-""Hiçbir Yerdeki Çocuk"" silinmez bir iz bırakan edebi bir mücevherdir ve derin düzeyde yankı uyandıran anlatılar arayanlar için mutlaka okunması gereken bir kitaptır. Bu kısa roman sadece bir karakterin yolculuğunu anlatmıyor; Bu, son sayfa çevrildikten çok sonra bile okuyucunun aklında kalacak şekilde güzelce hazırlanmış, paylaşılan insan deneyiminin bir keşfi.",
+            DescriptionTr = @"Arka Kapaktan
+Yaşamının tüm yönleriyle büyük lider Atatürk… “Tarihin akışını değiştiren, ona mührünü vuran veya büyük tehlikelere mani olan liderlere her memlekette rastlamak mümkün değildir. Atatürk dünya tarihinin nadiren gördüğü bir dehadır. Birinci Dünya Savaşı'ndan sonra, hiçbir mağlup milletin direniş göstermediği zamanda siviller ve askerlerle dünyaya meydan okumuştur.” - İlber Ortaylı Gazi Mustafa Kemal Atatürk kitabı, evvela imparatorluğu dirilten nesil olan 1880'liler kuşağı, Balkan coğrafyası ve Mustafa Kemal'in aile kökeni ile başlıyor. Akabinde Atatürk’ün askeri eğitimi, Manastır yılları, Milliyetçilikler Dönemi, İttihat ve Terakki, 2. Abdülhamid, Enver Paşa, Ziya Gökalp, Trablusgarb, Balkan Savaşları ve Sofya yıllarıyla devam ediyor. Ordumuzun İtilaf devletleriyle sekiz cephede mücadele ettiği Birinci Dünya Savaşı, kutlu zaferlerimiz Çanakkale ve Kutü’l Amâre, Mondros, son padişah Vahideddin, bir milletin ve ülkenin ölüm fermanı olan Sevr… Tüm detaylarıyla Milli Mücadele dönemi, 23 Nisan 1920 ve sonrasında muhalefete rağmen verilen Kurtuluş Savaşı, İnönü Muharebeleri, Lozan Konferansı, Büyük Taarruz ve Cumhuriyet’e giden yol... Saltanat ve hilafet tartışmaları, Lozan, On İki Ada, mübadele, Osmanlı'dan kalan borçlar, Musul ve yakın tarihin en önemli meselesi olan inkılablar... Son olarak kişisel özellikleriyle, dünyada, anılarda, hafızalarda kalan izleriyle modern Türkiye’nin kurucusu Atatürk... İlber Ortaylı bu ilk biyografisinde yaşamının tüm yönleriyle büyük lider Gazi Mustafa Kemal Atatürk'ü anlatıyor. Türk tarihçiliğine hiç unutulmayacak ve sürekli başvurulacak bir rehber kitap daha kazandırıyor...",
 
             
 
@@ -300,21 +297,21 @@ Bu kısa roman yalnızca bir hikaye değil; bu, aile, kayıp ve dayanıklılık 
                             {
                                 new Price
                                 {
-                                    PriceAmount = 69.99m,
-                                    DiscountedPriceAmount = 49.99m,
+                                    PriceAmount = 84.99m,
+                                    DiscountedPriceAmount = 79.99m,
                                     PriceCurrency = "₺"
                                 }
                             },
                             ProductDetail = new ProductDetail
                             {
-                                FormatTr = "178 sayfa",
-                                FormatEn = "178 pages",
-                                Dimensions = "12.7 x 1.04 x 20.32 cm",
-                                PublicationDate = new DateTime(2015, 01, 29),
-                                PublisherTr = "Siyah Nokta Yayıncılık",
-                                PublisherEn = "Black Dot Publishing",
-                                LanguageTr = "İngilizce",
-                                LanguageEn = "English"
+                                FormatTr = "480 sayfa",
+                                FormatEn = "480 pages",
+                                Dimensions = "13.4 x 3.2 x 21.1 cm",
+                                PublicationDate = new DateTime(2018, 01, 11),
+                                PublisherTr = "Kronik Kitap; 1. basım",
+                                PublisherEn = "Chronicle Book; 1st edition",
+                                LanguageTr = "Türkçe",
+                                LanguageEn = "Turkish"
                             },
 
                         },
@@ -326,8 +323,8 @@ Bu kısa roman yalnızca bir hikaye değil; bu, aile, kayıp ve dayanıklılık 
                             {
                                 new Price
                                 {
-                                    PriceAmount = 39.99m,
-                                    DiscountedPriceAmount = 19.99m,
+                                    PriceAmount = 59.99m,
+                                    DiscountedPriceAmount = 49.99m,
                                     PriceCurrency = "₺"
                                 }
                             },
@@ -335,12 +332,12 @@ Bu kısa roman yalnızca bir hikaye değil; bu, aile, kayıp ve dayanıklılık 
                             {
                                 FormatTr = "3 saat 45 dakika",
                                 FormatEn = "3 hours and 45 minutes",
-                                Dimensions = "12.7 x 1.04 x 20.32 cm",
-                                PublicationDate = new DateTime(2015, 01, 29),
-                                PublisherTr = "Siyah Nokta Yayıncılık",
-                                PublisherEn = "Black Dot Publishing",
-                                LanguageTr = "İngilizce",
-                                LanguageEn = "English"
+                                Dimensions = "13.4 x 3.2 x 21.1 cm",
+                                PublicationDate = new DateTime(2018, 01, 11),
+                                PublisherTr = "Kronik Kitap; 1. basım",
+                                PublisherEn = "Chronicle Book; 1st edition",
+                                LanguageTr = "Türkçe",
+                                LanguageEn = "Turkish"
                             },
 
                         },
@@ -352,7 +349,7 @@ Bu kısa roman yalnızca bir hikaye değil; bu, aile, kayıp ve dayanıklılık 
                             {
                                 new Price
                                 {
-                                    PriceAmount = 5.99m,
+                                    PriceAmount = 39.99m,
                                     //DiscountedPriceAmount = 44.99m,
                                     PriceCurrency = "₺"
                                 }
@@ -361,12 +358,12 @@ Bu kısa roman yalnızca bir hikaye değil; bu, aile, kayıp ve dayanıklılık 
                             {
                                 FormatTr = "604 KB",
                                 FormatEn = "604 KB",
-                                Dimensions = "12.7 x 1.04 x 20.32 cm",
-                                PublicationDate = new DateTime(2015, 01, 29),
-                                PublisherTr = "Siyah Nokta Yayıncılık",
-                                PublisherEn = "Black Dot Publishing",
-                                LanguageTr = "İngilizce",
-                                LanguageEn = "English"
+                                Dimensions = "13.4 x 3.2 x 21.1 cm",
+                                PublicationDate = new DateTime(2018, 01, 11),
+                                PublisherTr = "Kronik Kitap; 1. basım",
+                                PublisherEn = "Chronicle Book; 1st edition",
+                                LanguageTr = "Türkçe",
+                                LanguageEn = "Turkish"
                             },
 
                         },
@@ -376,17 +373,17 @@ Bu kısa roman yalnızca bir hikaye değil; bu, aile, kayıp ve dayanıklılık 
                 //mainImgUrl
                         new BookImgUrl
                         {
-                            ImgUrl = "https://m.media-amazon.com/images/I/7139zSoVSWL._SL1360_.jpg"
+                            ImgUrl = "https://m.media-amazon.com/images/I/51jUzMOHwkL._SL1000_.jpg"
                         },
                 //mainImgUrl
                         new BookImgUrl
                         {
-                            ImgUrl = "https://m.media-amazon.com/images/I/718RCgJRSgL._SL1360_.jpg"
+                            ImgUrl = "https://www.kulturatek.com/shop/12556-thickbox_default/gazi-mustafa-kemal-ataturk-ilber-ortayli.jpg"
                         },
-                        //new BookImgUrl
-                        //{
-                        //    ImgUrl = "https://m.media-amazon.com/images/I/71jzkfju+6L._SL1200_.jpg"
-                        //},
+                        new BookImgUrl
+                        {
+                            ImgUrl = "https://www.kulturatek.com/shop/12557-thickbox_default/gazi-mustafa-kemal-ataturk-ilber-ortayli.jpg"
+                        },
                         //new BookImgUrl
                         //{
                         //    ImgUrl = "https://m.media-amazon.com/images/I/61xx7rHwdTL._SL1200_.jpg"
@@ -396,8 +393,8 @@ Bu kısa roman yalnızca bir hikaye değil; bu, aile, kayıp ve dayanıklılık 
                     {
                 new BookVideoUrl
                 {
-                    CoverImgUrl = "https://i.ytimg.com/vi/5s0HY5D-Y5M/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAhGTYt5s1NuWRddOOcRMEuvqPeBw",
-                    VideoUrl="https://www.youtube.com/embed/5s0HY5D-Y5M?si=fyWYS_dhg7knTemp",
+                    CoverImgUrl = "https://i.ytimg.com/vi/G5zEOSwuY24/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLB9zCr-MN_RyGdZEUNoEy599Hri-w",
+                    VideoUrl="https://www.youtube.com/embed/G5zEOSwuY24?si=MiFuEksRy7LzCZq-",
                 },
                 //new BookVideoUrl
                 //{
@@ -411,61 +408,53 @@ Bu kısa roman yalnızca bir hikaye değil; bu, aile, kayıp ve dayanıklılık 
                         new BookReview
                         {
                             UserId = randomUser.Id,
-                            CommentTitleEn = "Such an excellent fast paced read.",
-                            CommentTitleTr = "Böyle mükemmel, hızlı tempolu bir okuma.",
-                            CommentEn = @"Characters are vivid and the way Rachel writes it's easy to identify relationips and the emotions being experienced between people.",
+                            CommentTitleEn = "Seamless",
+                            CommentTitleTr = "Sorunsuz",
+                            CommentEn = @"Solid and fast shipping",
 
 
-                            CommentTr = @"Karakterler canlıdır ve Rachel'ın yazma şekli, insanlar arasında yaşanan ilişkileri ve duyguları tanımlamak kolaydır.",
+                            CommentTr = @"Sağlam ve hızlı kargo",
                             Raiting = 5,
                             CreatedAt = DateTime.Now,
                         },
                         new BookReview
                         {
                             UserId = randomUser.Id,
-                            CommentTitleEn = "Tasha's story continues",
-                            CommentTitleTr = "Tasha'nın hikayesi devam ediyor",
-                            CommentEn = @"This novella by Rachel Abbott picks up the story of Tasha Joseph where Stranger Child left off. Tasha is on the run, certain that her family hate her for what happened to little Ollie and knowing that if she stays still, her old family, the gang she used to work for, will find her. The best she could hope for would be to put to work in a brothel, the worst could mean her death. People are searching for her, but she doesn’t know if the are friend or foe and she cannot take any chances. Her only option is to stay hidden.
-
-This is a great short story in which we learn more about Tasha, about the life she is living now on the streets and that which she lived before; under the control of the gang that used her for shoplifting and drug running. She is a feisty character for sure, but she is also just a teenager and she is scared. Having spent so long being beaten down she sees nothing good in herself and although she has found a friend on the streets, she will never truly be safe.
-
-Tapping into the plight of the homeless people of Manchester, Rachel Abbott manages to create a tense, compelling and fraught read which feels authentic but also ties up a lot of loose ends for both Tasha and Emma. I really felt for Tasha, and some sections were hard to read, or in m case listen to as I chose the audio book option, but it was still compelling. Although this isn’t really a Tom Douglas story he does still feature, albeit in a much smaller role. Still, it’s nice to see him stop by. And the ending brings hope for both Emma and Tasha. Whether we hear from either again I don’t know but they are going to be characters that are hard to forget.",
+                            CommentTitleEn = "definitely get it",
+                            CommentTitleTr = "kesinlikle alın",
+                            CommentEn = @"Appreciate İlber Ortaylı while he is alive...",
 
 
-                            CommentTr = @"Rachel Abbott'un bu kısa romanı, Tasha Joseph'in hikayesini Yabancı Çocuk'un bıraktığı yerden devam ettiriyor. Tasha kaçmaktadır, küçük Ollie'nin başına gelenlerden dolayı ailesinin ondan nefret ettiğinden emindir ve hareketsiz kalırsa eski ailesinin, yani eskiden çalıştığı çetenin onu bulacağını bilir. Umabileceği en iyi şey bir genelevde çalışmaya başlamaktı, en kötüsü ise ölümü anlamına gelebilirdi. İnsanlar onu arıyor ama o, onların dost mu düşman mı olduğunu bilmiyor ve işini şansa bırakamaz. Tek seçeneği gizli kalmaktır.
-
-Bu, Tasha hakkında, şu anda sokaklarda yaşadığı ve daha önce yaşadığı hayat hakkında daha fazla şey öğrendiğimiz harika bir kısa hikaye; Onu hırsızlık ve uyuşturucu kaçakçılığı için kullanan çetenin kontrolü altında. Kesinlikle alıngan bir karakter ama aynı zamanda henüz bir genç ve korkuyor. O kadar uzun süre dövüldükten sonra kendinde iyi bir şey göremiyor ve sokaklarda bir arkadaş bulsa da hiçbir zaman tam anlamıyla güvende olamayacak.
-
-Manchester'daki evsizlerin içinde bulunduğu kötü duruma değinen Rachel Abbott, hem Tasha hem de Emma için gerçekçi hissettiren ama aynı zamanda pek çok yarım kalmış işi de bağlayan gergin, ilgi çekici ve endişe verici bir okuma yaratmayı başarıyor. Tasha'yı gerçekten hissettim ve bazı bölümleri okumak ya da sesli kitap seçeneğini seçtiğim için dinlemek zordu ama yine de ilgi çekiciydi. Her ne kadar bu aslında bir Tom Douglas hikayesi olmasa da, çok daha küçük bir rolle de olsa hâlâ öne çıkıyor. Yine de onun uğradığını görmek güzel. Ve sonu hem Emma'ya hem de Tasha'ya umut veriyor. İkisinden de bir daha haber alır mıyız bilmiyorum ama unutulması zor karakterler olacaklar.",
-                            Raiting = 4,
-                            CreatedAt = DateTime.Now,
-                        },
-                        new BookReview
-                        {
-                            UserId = randomUser.Id,
-                            CommentTitleEn = "Excellent",
-                            CommentTitleTr = "Harika",
-                            CommentEn = @"Not been able to put down any of this author's book's. They are some of the best ones I have read.",
-
-
-                            CommentTr = @"Bu yazarın hiçbir kitabını elimden bırakamadım. Onlar okuduklarım arasında en iyilerinden bazıları.",
+                            CommentTr = @"İlber Ortaylı hayatta iken kıymetini bilin...",
                             Raiting = 5,
                             CreatedAt = DateTime.Now,
                         },
                         new BookReview
                         {
                             UserId = randomUser.Id,
-                            CommentTitleEn = "Awsome",
-                            CommentTitleTr = "Süper",
-                            CommentEn = @"This 2nd book about Tom ,Emma and Rasta was worth reading a conclusion to A terrible story of a child's life after her mother dies .
-Really enjoying this series",
+                            CommentTitleEn = "I hope it is useful.",
+                            CommentTitleTr = "Faydalı olmasını dilerim.",
+                            CommentEn = @"Benefiting from İlber Ortaylı's life experience will be beneficial for people of all ages and situations. With its worldview, knowledge and sincerity, it offers its readers and followers content to spend quality time. On the occasion of this book, I wish İlber Hacam health and well-being.",
 
 
-                            CommentTr = @"Tom, Emma ve Rasta hakkındaki bu 2. kitap, Annesi öldükten sonra bir çocuğun hayatının korkunç hikayesinin bir sonucu olarak okunmaya değerdi.
-Bu seriden gerçekten keyif alıyorum",
+                            CommentTr = @"İlber Ortaylı'nın hayat tecrübesinden yararlanmak her yaştan ve durumdan insanlar için faydalı olacaktır. Dünya görüşü, bilgisi ve samimiyetiyle okurlarını ve takipçilerine kaliteli vakit geçerecek içerikler sunuyor. Bu kitap vesilesiyle İlber Hacama sağlık ve afiyet diliyorum.",
                             Raiting = 5,
                             CreatedAt = DateTime.Now,
-                        }
+                        },
+//                        new BookReview
+//                        {
+//                            UserId = randomUser.Id,
+//                            CommentTitleEn = "Awsome",
+//                            CommentTitleTr = "Süper",
+//                            CommentEn = @"This 2nd book about Tom ,Emma and Rasta was worth reading a conclusion to A terrible story of a child's life after her mother dies .
+//Really enjoying this series",
+
+
+//                            CommentTr = @"Tom, Emma ve Rasta hakkındaki bu 2. kitap, Annesi öldükten sonra bir çocuğun hayatının korkunç hikayesinin bir sonucu olarak okunmaya değerdi.
+//Bu seriden gerçekten keyif alıyorum",
+//                            Raiting = 5,
+//                            CreatedAt = DateTime.Now,
+//                        }
                     },
             
 
@@ -479,7 +468,7 @@ Bu seriden gerçekten keyif alıyorum",
             new BookCategory
             {
                 BookId = book.Id,
-                CategoryId = 2
+                CategoryId = 8
             },
             new BookCategory
             {

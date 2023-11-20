@@ -12,5 +12,8 @@ public class BookListResponseDto
     public string AuthorName { get; set; }
     public int AuthorId { get; set; }
     public double? BookAverageReviewRating { get; set; }
+    public int ReviewCount { get; set; }
     public List<LanguageDto> Languages { get; set; }
+    public DateTime PublishDate { get; set; }
+    public string CategoryName { get; set; }
 }
