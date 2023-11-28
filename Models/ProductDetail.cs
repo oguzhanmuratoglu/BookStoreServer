@@ -7,7 +7,6 @@ public class ProductDetail
 {
     public int Id { get; set; }
     public int BookVariationId { get; set; }
-    public BookVariation BookVariation { get; set; }
     public string FormatTr { get; set; }
     public string FormatEn { get; set; }
     public string Dimensions { get; set; }

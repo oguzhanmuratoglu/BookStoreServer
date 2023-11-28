@@ -252,7 +252,7 @@ public class ConfigurationsController : ControllerBase
 
 
     [HttpGet]
-    public  async Task<IActionResult> AddSampleBook()
+    public async Task<IActionResult> AddSampleBook()
     {
         var random = new Random();
 
@@ -460,7 +460,7 @@ Yaşamının tüm yönleriyle büyük lider Atatürk… “Tarihin akışını d
 
         };
 
-        _context.Books.Add(book);
+        _context.Books.AddAsync(book);
         await _context.SaveChangesAsync();
 
         var bookCategories = new List<BookCategory>
@@ -478,7 +478,7 @@ Yaşamının tüm yönleriyle büyük lider Atatürk… “Tarihin akışını d
         };
 
 
-        _context.BooksCategories.AddRange(bookCategories);
+        _context.BooksCategories.AddRangeAsync(bookCategories);
 
 
         //var bookCategory = new BookCategory

@@ -10,7 +10,6 @@ public class Author
     public string BiographyTr { get; set; }
     public string BiographyEn { get; set; }
     public string ProfilePhotoImgUrl { get; set; }
-    public List<Book> Books { get; set; }
 }
 
 public class AuthorConfiguration : IEntityTypeConfiguration<Author>

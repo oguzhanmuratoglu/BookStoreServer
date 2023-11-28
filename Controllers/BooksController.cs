@@ -5,6 +5,7 @@ using BookStoreServer.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace BookStoreServer.Controllers;
 [Route("api/[controller]/[action]")]
@@ -19,6 +20,141 @@ public class BooksController : ControllerBase
     {
         _context = context;
         _mapper = mapper;
+    }
+
+    [HttpGet]
+    public IActionResult GetRelatedBooks()
+    {
+        var result = _context.Books.Include(b=>b.BookVariations).ThenInclude(bv=>bv.Prices).Include(b=>b.Author).OrderBy(x => Guid.NewGuid()).Take(8).ToList();
+
+        return Ok(result);
+    }
+
+
+    [HttpPost]
+    public IActionResult GetSingleBook(BookDetailRequestDto request)
+    {
+        var response = new BookDetailResponseDto();
+
+        var book = _context.Books
+                .Include(b => b.Author)
+                .Include(b => b.BookImgUrls)
+                .Include(b => b.BookReviews)
+                .Include(b => b.BookVariations)
+                    .ThenInclude(bv => bv.Prices)
+                .Include(b => b.BookVariations)
+                    .ThenInclude(bv => bv.ProductDetail)
+                .Include(b => b.BookVideoUrls)
+            .Where(b => b.Id == request.BookId)
+        .ToList();
+
+        //    book.SelectMany(b => b.BookImgUrls).Select(bi => bi.ImgUrl).OrderBy(book.Select(b => b.MainImgUrl)).ToList();
+        //    book
+        //.SelectMany(b => b.BookImgUrls)
+        //.Select(bi => bi.ImgUrl)
+        //.OrderBy(imgUrl => book.Select(b => b.MainImgUrl))
+        //.ToList();
+
+        var result = book
+                    .SelectMany(b => b.BookImgUrls.Select(imgUrl => new { Book = b, ImgUrl = imgUrl.ImgUrl }))
+                    .OrderBy(bi => bi.ImgUrl == bi.Book.MainImgUrl ? 0 : 1)
+                    .Select(bi => bi.ImgUrl)
+                    .ToList();
+
+        for (int i = 0; i < book.Count && i < result.Count; i++)
+        {
+            for (int j = 0; j < book[i].BookImgUrls.Count && j < result.Count; j++)
+            {
+                book[i].BookImgUrls[j].ImgUrl = result[j];
+            }
+        }
+
+
+
+        var userIds = book.SelectMany(b => b.BookReviews).Select(br => br.UserId).Distinct().ToList();
+
+
+        response.BookReviews = book.SelectMany(b => b.BookReviews).Take(request.ReviewSize).ToList();
+        response.Data = book;
+        response.BookAverageReviewRating = Math.Round(book.SelectMany(b => b.BookReviews).Select(r => r.Raiting).Average(), 1, MidpointRounding.AwayFromZero);
+        response.ReviewCount = book.SelectMany(b => b.BookReviews).Count();
+        response.StarCounts = new StarCountDto
+        {
+            FiveStarCount = book?.SelectMany(b => b.BookReviews).Where(br=>br?.Raiting == 5 && br != null).Select(br=>br.Raiting).Count() ?? 0,
+            FourStarCount = book?.SelectMany(b => b.BookReviews).Where(br => br?.Raiting == 4 && br != null).Select(br => br.Raiting).Count() ?? 0,
+            ThreeStarCount = book?.SelectMany(b => b.BookReviews).Where(br => br?.Raiting == 3 && br != null).Select(br => br.Raiting).Count() ?? 0,
+            TwoStarCount = book?.SelectMany(b => b.BookReviews).Where(br => br?.Raiting == 2 && br != null).Select(br => br.Raiting).Count() ?? 0,
+            OneStarCount = book?.SelectMany(b => b.BookReviews).Where(br => br?.Raiting == 1 && br != null).Select(br => br.Raiting).Count() ?? 0,
+        };
+        response.UserReviews = _context.Users.Where(u => userIds.Contains(u.Id)).Select(u => new UserReviewDto
+        {
+            UserId = u.Id,
+            UserName = u.Name,
+        }).ToList();
+        response.Categories = _context.BooksCategories.Where(bc=>bc.BookId== request.BookId).Select(bc => new CategoryDto
+        {
+            Id = bc.CategoryId,
+            Name = bc.Category.Name,
+        }).ToList();
+
+        if(response.ReviewCount != 0)
+        {
+            response.StarPercentages = new StarPercentageDto
+            {
+                FiveStarPercentage = (response.StarCounts.FiveStarCount * 100) / (response.ReviewCount),
+                FourStarPercentage = (response.StarCounts.FourStarCount * 100) / (response.ReviewCount),
+                ThreeStarPercentage = (response.StarCounts.ThreeStarCount * 100) / (response.ReviewCount),
+                TwoStarPercentage = (response.StarCounts.TwoStarCount * 100) / (response.ReviewCount),
+                OneStarPercentage = (response.StarCounts.OneStarCount * 100) / (response.ReviewCount)
+            }; 
+        }
+
+
+
+        return Ok(response);
+    }
+
+    [HttpGet]
+    public IActionResult GetFeaturedBooksAndAuthors()
+    {
+        var random = new Random();
+
+        // Kullanıcı sayısını alın
+        var authorCount = _context.Authors.Count();
+
+        // Rastgele bir indeks oluşturun
+        var randomIndex = random.Next(1, authorCount + 1);
+
+        // Oluşturulan indeksteki kullanıcıyı seçin
+        var randomAuthor1 = _context.Authors.Skip(randomIndex - 1).FirstOrDefault();
+        var randomIndex2 = random.Next(1, authorCount + 1);
+        while (randomIndex2 == randomIndex)
+        {
+            randomIndex2 = random.Next(1, authorCount + 1);
+        }
+        var randomAuthor2 = _context.Authors.Skip(randomIndex2 - 1).FirstOrDefault();
+
+        var responseList = new List<FeaturedBannerDto>();
+        var randomAuthors = new List<Author> { randomAuthor1, randomAuthor2 };
+
+        foreach (var randomAuthor in randomAuthors)
+        {
+            var featuredBannerData = _context.Books
+                .Include(b => b.Author)
+                .Where(b => b.Author == randomAuthor)
+                .Select(b => new FeaturedBannerDto
+                {
+                    BookImgUrl = b.MainImgUrl,
+                    BookId = b.Id,
+                    AuthorImgUrl = b.Author.ProfilePhotoImgUrl,
+                    AuthorId = b.Author.Id
+                })
+                .FirstOrDefault();
+
+            responseList.Add(featuredBannerData);
+        }
+
+        return Ok(responseList);
     }
 
 
@@ -114,7 +250,7 @@ public class BooksController : ControllerBase
                     booksByFilter = booksByFilter.OrderBy(book => book.PublishDate).ToList();
                     break;
                 case "price":
-                    booksByFilter = booksByFilter.OrderBy(book => book.Prices.FirstOrDefault().PriceAmount).ToList();
+                    booksByFilter = booksByFilter.OrderBy(book => book.Prices.FirstOrDefault().DiscountedPriceAmount).ToList();
                     break;
                 case "price-desc":
                     booksByFilter = booksByFilter.OrderByDescending(book => book.Prices.FirstOrDefault().PriceAmount).ToList();
@@ -125,7 +261,7 @@ public class BooksController : ControllerBase
         }
 
         
-        response.Data = booksByFilter = booksByFilter
+        response.Data = booksByFilter
                             .Skip((request.PageNumber - 1) * request.PageSize)
                             .Take(request.PageSize)
                             .ToList();
@@ -136,6 +272,11 @@ public class BooksController : ControllerBase
 
         return Ok(response);
     }
+
+
+
+
+
 
     //Eski API
     [HttpGet("{id}")]

@@ -4,6 +4,7 @@ using BookStoreServer.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookStoreServer.Migrations
 {
     [DbContext(typeof(BookwormDbContext))]
-    partial class BookwormDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231122123433_mg3")]
+    partial class mg3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +24,21 @@ namespace BookStoreServer.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("BookCategory", b =>
+                {
+                    b.Property<int>("BooksId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CategoriesId")
+                        .HasColumnType("int");
+
+                    b.HasKey("BooksId", "CategoriesId");
+
+                    b.HasIndex("CategoriesId");
+
+                    b.ToTable("BookCategory");
+                });
 
             modelBuilder.Entity("BookStoreServer.Models.Address", b =>
                 {
@@ -679,6 +697,21 @@ namespace BookStoreServer.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("WishLists");
+                });
+
+            modelBuilder.Entity("BookCategory", b =>
+                {
+                    b.HasOne("BookStoreServer.Models.Book", null)
+                        .WithMany()
+                        .HasForeignKey("BooksId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BookStoreServer.Models.Category", null)
+                        .WithMany()
+                        .HasForeignKey("CategoriesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("BookStoreServer.Models.Address", b =>

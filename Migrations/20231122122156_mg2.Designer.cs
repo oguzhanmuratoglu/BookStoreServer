@@ -4,6 +4,7 @@ using BookStoreServer.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookStoreServer.Migrations
 {
     [DbContext(typeof(BookwormDbContext))]
-    partial class BookwormDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231122122156_mg2")]
+    partial class mg2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -321,6 +324,9 @@ namespace BookStoreServer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("BookId")
+                        .HasColumnType("int");
+
                     b.Property<string>("IconClass")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -335,6 +341,8 @@ namespace BookStoreServer.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BookId");
 
                     b.ToTable("Categories");
                 });
@@ -766,6 +774,13 @@ namespace BookStoreServer.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("BookStoreServer.Models.Category", b =>
+                {
+                    b.HasOne("BookStoreServer.Models.Book", null)
+                        .WithMany("Categories")
+                        .HasForeignKey("BookId");
+                });
+
             modelBuilder.Entity("BookStoreServer.Models.Order", b =>
                 {
                     b.HasOne("BookStoreServer.Models.ShippingModule", "ShippingModule")
@@ -885,6 +900,8 @@ namespace BookStoreServer.Migrations
                     b.Navigation("BookVariations");
 
                     b.Navigation("BookVideoUrls");
+
+                    b.Navigation("Categories");
                 });
 
             modelBuilder.Entity("BookStoreServer.Models.BookVariation", b =>

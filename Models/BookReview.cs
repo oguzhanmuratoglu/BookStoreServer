@@ -7,9 +7,7 @@ public class BookReview
 {
     public int Id { get; set; }
     public int BookId { get; set; }
-    public Book Book { get; set; }
     public int UserId { get; set; }
-    public User User { get; set; }
     public string CommentTitleTr { get; set; }
     public string CommentTitleEn { get; set; }
     public string CommentTr { get; set; }
