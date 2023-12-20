@@ -254,16 +254,9 @@ public class ConfigurationsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> AddSampleBook()
     {
-        var random = new Random();
 
         // Kullanıcı sayısını alın
-        var userCount = _context.Users.Count();
-
-        // Rastgele bir indeks oluşturun
-        var randomIndex = random.Next(1, userCount + 1);
-
-        // Oluşturulan indeksteki kullanıcıyı seçin
-        var randomUser = _context.Users.Skip(randomIndex - 1).FirstOrDefault();
+        var userIds = _context.Users.Select(u=>u.Id).ToList();
 
         var book = new Book
         {
@@ -275,7 +268,6 @@ public class ConfigurationsController : ControllerBase
             SubTitleEn = @"The leaders who change the course of history, leave their mark on it, or prevent great dangers are not encountered in every country. Atatürk is a rare genius in world history. After the First World War, at a time when no defeated nation resisted, he defied the world with civilians and soldiers."" - İlber Ortaylı",
             MainImgUrl = "https://m.media-amazon.com/images/I/51jUzMOHwkL._SL1000_.jpg",
             ISBN = "9752430295",
-            Quantity = 100,
             DescriptionEn = @"On the back cover:
 All aspects of the life of the great leader Atatürk... 'It is not possible to encounter leaders in every country who change the course of history, leave their mark on it, or prevent great dangers. Atatürk is a rare genius in world history. After the First World War, at a time when no defeated nation resisted, he defied the world with civilians and soldiers.' - İlber Ortaylı
 
@@ -298,7 +290,6 @@ Yaşamının tüm yönleriyle büyük lider Atatürk… “Tarihin akışını d
                                 new Price
                                 {
                                     PriceAmount = 84.99m,
-                                    DiscountedPriceAmount = 79.99m,
                                     PriceCurrency = "₺"
                                 }
                             },
@@ -407,7 +398,7 @@ Yaşamının tüm yönleriyle büyük lider Atatürk… “Tarihin akışını d
                     {
                         new BookReview
                         {
-                            UserId = randomUser.Id,
+                            UserId = userIds.OrderBy(u=> Guid.NewGuid()).FirstOrDefault(),
                             CommentTitleEn = "Seamless",
                             CommentTitleTr = "Sorunsuz",
                             CommentEn = @"Solid and fast shipping",
@@ -419,7 +410,7 @@ Yaşamının tüm yönleriyle büyük lider Atatürk… “Tarihin akışını d
                         },
                         new BookReview
                         {
-                            UserId = randomUser.Id,
+                            UserId =userIds.OrderBy(u=> Guid.NewGuid()).FirstOrDefault(),
                             CommentTitleEn = "definitely get it",
                             CommentTitleTr = "kesinlikle alın",
                             CommentEn = @"Appreciate İlber Ortaylı while he is alive...",
@@ -431,7 +422,7 @@ Yaşamının tüm yönleriyle büyük lider Atatürk… “Tarihin akışını d
                         },
                         new BookReview
                         {
-                            UserId = randomUser.Id,
+                            UserId = userIds.OrderBy(u=> Guid.NewGuid()).FirstOrDefault(),
                             CommentTitleEn = "I hope it is useful.",
                             CommentTitleTr = "Faydalı olmasını dilerim.",
                             CommentEn = @"Benefiting from İlber Ortaylı's life experience will be beneficial for people of all ages and situations. With its worldview, knowledge and sincerity, it offers its readers and followers content to spend quality time. On the occasion of this book, I wish İlber Hacam health and well-being.",

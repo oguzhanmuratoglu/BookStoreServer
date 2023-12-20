@@ -17,7 +17,7 @@ namespace BookStoreServer.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.13")
+                .HasAnnotation("ProductVersion", "7.0.14")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -138,21 +138,9 @@ namespace BookStoreServer.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<bool>("InStock")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
                     b.Property<string>("MainImgUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
 
                     b.Property<string>("SubTitleEn")
                         .IsRequired()
@@ -171,6 +159,9 @@ namespace BookStoreServer.Migrations
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
+
+                    b.Property<int>("VisitedCount")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -280,6 +271,18 @@ namespace BookStoreServer.Migrations
                     b.Property<int>("FormatTr")
                         .HasColumnType("int");
 
+                    b.Property<bool>("InStock")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BookId");
@@ -299,6 +302,14 @@ namespace BookStoreServer.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CoverImgUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VideoDuration")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VideoTitle")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -364,6 +375,9 @@ namespace BookStoreServer.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsActivated")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
@@ -371,6 +385,9 @@ namespace BookStoreServer.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Code")
+                        .IsUnique();
 
                     b.ToTable("Coupons");
                 });
@@ -596,7 +613,7 @@ namespace BookStoreServer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("BookId")
+                    b.Property<int>("BookVariationId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
@@ -607,7 +624,7 @@ namespace BookStoreServer.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BookId");
+                    b.HasIndex("BookVariationId");
 
                     b.HasIndex("ShoppingCartId");
 
@@ -697,7 +714,7 @@ namespace BookStoreServer.Migrations
             modelBuilder.Entity("BookStoreServer.Models.Book", b =>
                 {
                     b.HasOne("BookStoreServer.Models.Author", "Author")
-                        .WithMany("Books")
+                        .WithMany()
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -835,21 +852,19 @@ namespace BookStoreServer.Migrations
 
             modelBuilder.Entity("BookStoreServer.Models.ShoppingCartItem", b =>
                 {
-                    b.HasOne("BookStoreServer.Models.Book", "Book")
+                    b.HasOne("BookStoreServer.Models.BookVariation", "BookVariation")
                         .WithMany()
-                        .HasForeignKey("BookId")
+                        .HasForeignKey("BookVariationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BookStoreServer.Models.ShoppingCart", "ShoppingCart")
+                    b.HasOne("BookStoreServer.Models.ShoppingCart", null)
                         .WithMany("ShoppingCartItems")
                         .HasForeignKey("ShoppingCartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Book");
-
-                    b.Navigation("ShoppingCart");
+                    b.Navigation("BookVariation");
                 });
 
             modelBuilder.Entity("BookStoreServer.Models.WishList", b =>
@@ -869,11 +884,6 @@ namespace BookStoreServer.Migrations
                     b.Navigation("Book");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("BookStoreServer.Models.Author", b =>
-                {
-                    b.Navigation("Books");
                 });
 
             modelBuilder.Entity("BookStoreServer.Models.Book", b =>

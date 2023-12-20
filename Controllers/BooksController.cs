@@ -1,10 +1,13 @@
 ﻿using AutoMapper;
+using Azure;
+using Azure.Core;
 using BookStoreServer.Context;
 using BookStoreServer.Dtos;
 using BookStoreServer.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel;
 using static System.Reflection.Metadata.BlobBuilder;
 
 namespace BookStoreServer.Controllers;
@@ -22,12 +25,60 @@ public class BooksController : ControllerBase
         _mapper = mapper;
     }
 
+    
+    [HttpGet("{bookId}")]
+    public IActionResult IncreaseVisitedCount(int bookId)
+    {
+        var book = _context.Books.Where(b => b.Id == bookId).FirstOrDefault();
+        if (book != null) 
+        {
+            book.VisitedCount++;
+            _context.Books.Update(book);
+            _context.SaveChanges();
+            return NoContent();
+        }
+        return NotFound();
+    }
+    
     [HttpGet]
     public IActionResult GetRelatedBooks()
     {
-        var result = _context.Books.Include(b=>b.BookVariations).ThenInclude(bv=>bv.Prices).Include(b=>b.Author).OrderBy(x => Guid.NewGuid()).Take(8).ToList();
+        var books = _context.BooksCategories
+            .Include(bc => bc.Book)
+                .ThenInclude(b => b.BookVariations)
+                    .ThenInclude(bv => bv.Prices)
+            .Include(bc => bc.Book)
+                .ThenInclude(b => b.BookVariations)
+                    .ThenInclude(bv => bv.ProductDetail)
+            .Include(bc => bc.Book)
+                .ThenInclude(b => b.Author)
+            .Include(bc => bc.Book)
+                .ThenInclude(b => b.BookReviews)
+            .Select(bc => new BookListResponseDto
+            {
+                BookId = bc.Book.Id,
+                MainImgUrl = bc.Book.MainImgUrl,
+                TitleTr = bc.Book.TitleTr,
+                TitleEn = bc.Book.TitleEn,
+                Prices = bc.Book.BookVariations.Where(bv => bv.FormatEn == Enums.BookFormatEnumEn.Hardcover)
+                    .SelectMany(bv => bv.Prices.Select(p => new PriceDto
+                    {
+                        PriceId = p.Id,
+                        PriceAmount = p.PriceAmount,
+                        DiscountedPriceAmount = p.DiscountedPriceAmount,
+                        PriceCurrency = p.PriceCurrency
+                    })).ToList(),
+                AuthorName = bc.Book.Author.FullName,
+                AuthorId = bc.Book.Author.Id,
+                PublishDate = bc.Book.BookVariations.FirstOrDefault().ProductDetail.PublicationDate,
+                ReviewCount = bc.Book.BookReviews.Count(),
+                BookAverageReviewRating =
+                bc.Book.BookReviews != null && bc.Book.BookReviews.Any()
+                ? Math.Round(bc.Book.BookReviews.Select(br => br.Raiting).Average(), 1, MidpointRounding.AwayFromZero)
+                : (double?)null
+            }).OrderBy(o => Guid.NewGuid()).Take(8).ToList();
 
-        return Ok(result);
+        return Ok(books);
     }
 
 
@@ -147,7 +198,8 @@ public class BooksController : ControllerBase
                     BookImgUrl = b.MainImgUrl,
                     BookId = b.Id,
                     AuthorImgUrl = b.Author.ProfilePhotoImgUrl,
-                    AuthorId = b.Author.Id
+                    AuthorId = b.Author.Id,
+                    AuthorName = b.Author.FullName
                 })
                 .FirstOrDefault();
 
@@ -181,6 +233,8 @@ public class BooksController : ControllerBase
                 MainImgUrl = bc.Book.MainImgUrl,
                 TitleTr = bc.Book.TitleTr,
                 TitleEn = bc.Book.TitleEn,
+                SubTitleEn = bc.Book.SubTitleEn,
+                SubTitleTr = bc.Book.SubTitleTr,
                 Prices = bc.Book.BookVariations.Where(bv => bv.FormatEn == Enums.BookFormatEnumEn.Hardcover)
                     .SelectMany(bv => bv.Prices.Select(p => new PriceDto
                     {
@@ -250,10 +304,10 @@ public class BooksController : ControllerBase
                     booksByFilter = booksByFilter.OrderBy(book => book.PublishDate).ToList();
                     break;
                 case "price":
-                    booksByFilter = booksByFilter.OrderBy(book => book.Prices.FirstOrDefault().DiscountedPriceAmount).ToList();
+                    booksByFilter = booksByFilter.OrderBy(book => book.Prices.FirstOrDefault().DiscountedPriceAmount ?? book.Prices.FirstOrDefault().PriceAmount).ToList();
                     break;
                 case "price-desc":
-                    booksByFilter = booksByFilter.OrderByDescending(book => book.Prices.FirstOrDefault().PriceAmount).ToList();
+                    booksByFilter = booksByFilter.OrderByDescending(book => book.Prices.FirstOrDefault().DiscountedPriceAmount ?? book.Prices.FirstOrDefault().PriceAmount).ToList();
                     break;
                 default:
                     break;

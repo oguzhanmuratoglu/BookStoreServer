@@ -8,5 +8,6 @@ public class MapProfile : Profile
 {
 	public MapProfile()
     {
+        CreateMap<Coupon, CouponResponseDto>();
     }
 }

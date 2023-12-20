@@ -4,8 +4,7 @@ public class ShoppingCartItem
 {
     public int Id { get; set; }
     public int ShoppingCartId { get; set; }
-    public ShoppingCart ShoppingCart { get; set; }
-    public int BookId { get; set; }
-    public Book Book { get; set; }
+    public int BookVariationId { get; set; }
+    public BookVariation BookVariation { get; set; }
     public int Quantity { get; set; }
 }

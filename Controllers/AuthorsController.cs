@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BookStoreServer.Context;
+using BookStoreServer.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -21,14 +22,39 @@ public class AuthorsController : ControllerBase
 
     [HttpGet("{id}")]
     public IActionResult GetBooksByAuthorId(int id)
-    { 
-        var books = _context.Books.Include(b=>b.BookVariations).ThenInclude(bv=>bv.Prices).Where(b => b.AuthorId == id).ToList();
- 
+    {
+        var books = _context.Books
+               .Include(b => b.BookVariations)
+                   .ThenInclude(bv => bv.Prices)
+               .Include(b => b.BookReviews)
+           .Where(b=>b.AuthorId== id)
+           .Select(bc => new BookListResponseDto
+           {
+               BookId = bc.Id,
+               MainImgUrl = bc.MainImgUrl,
+               TitleTr = bc.TitleTr,
+               TitleEn = bc.TitleEn,
+               Prices = bc.BookVariations.Where(bv => bv.FormatEn == Enums.BookFormatEnumEn.Hardcover)
+                   .SelectMany(bv => bv.Prices.Select(p => new PriceDto
+                   {
+                       PriceId = p.Id,
+                       PriceAmount = p.PriceAmount,
+                       DiscountedPriceAmount = p.DiscountedPriceAmount,
+                       PriceCurrency = p.PriceCurrency
+                   })).ToList(),
+               AuthorId = bc.Author.Id,
+               ReviewCount = bc.BookReviews.Count(),
+               BookAverageReviewRating =
+               bc.BookReviews != null && bc.BookReviews.Any()
+               ? Math.Round(bc.BookReviews.Select(br => br.Raiting).Average(), 1, MidpointRounding.AwayFromZero)
+               : (double?)null
+           }).ToList();
+
         var result = books.Take(4).ToList();
 
         var result2 = books.Take(5).ToList();
 
-        return Ok(new {result,result2});
+        return Ok(new {result, result2});
     }
 
     [HttpGet("{id}")]

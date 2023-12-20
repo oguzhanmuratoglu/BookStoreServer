@@ -76,3 +76,11 @@ D:\Users\Oguzhan\source\repos\YMYP\YMYP-Frontend-main\YMYP-Frontend-main\Angular
 D:\Users\Oguzhan\source\repos\YMYP\YMYP-Frontend-main\YMYP-Frontend-main\Angular\BookStoreWithNewTheme\BookStoreServer\obj\Debug\net7.0\ref\BookStoreServer.dll
 D:\Users\Oguzhan\source\repos\YMYP\YMYP-Frontend-main\YMYP-Frontend-main\Angular\BookStoreWithNewTheme\BookStoreServer\bin\Debug\net7.0\AutoMapper.dll
 D:\Users\Oguzhan\source\repos\YMYP\YMYP-Frontend-main\YMYP-Frontend-main\Angular\BookStoreWithNewTheme\BookStoreServer\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\Users\Oguzhan\source\repos\YMYP\YMYP-Frontend-main\YMYP-Frontend-main\Angular\BookStoreWithNewTheme\BookStoreServer\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Users\Oguzhan\source\repos\YMYP\YMYP-Frontend-main\YMYP-Frontend-main\Angular\BookStoreWithNewTheme\BookStoreServer\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Users\Oguzhan\source\repos\YMYP\YMYP-Frontend-main\YMYP-Frontend-main\Angular\BookStoreWithNewTheme\BookStoreServer\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\Users\Oguzhan\source\repos\YMYP\YMYP-Frontend-main\YMYP-Frontend-main\Angular\BookStoreWithNewTheme\BookStoreServer\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
+D:\Users\Oguzhan\source\repos\YMYP\YMYP-Frontend-main\YMYP-Frontend-main\Angular\BookStoreWithNewTheme\BookStoreServer\bin\Debug\net7.0\Microsoft.Extensions.Identity.Stores.dll
+D:\Users\Oguzhan\source\repos\YMYP\YMYP-Frontend-main\YMYP-Frontend-main\Angular\BookStoreWithNewTheme\BookStoreServer\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+D:\Users\Oguzhan\source\repos\YMYP\YMYP-Frontend-main\YMYP-Frontend-main\Angular\BookStoreWithNewTheme\BookStoreServer\obj\Debug\net7.0\BookStoreServer.sourcelink.json
+D:\Users\Oguzhan\source\repos\YMYP\YMYP-Frontend-main\YMYP-Frontend-main\Angular\BookStoreWithNewTheme\BookStoreServer\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

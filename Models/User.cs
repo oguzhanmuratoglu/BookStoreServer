@@ -11,7 +11,7 @@ public class User
     public string DisplayName { get; set; }
     public string Email { get; set; }
     public string Password { get; set; }
-    public List<Address> Addresses { get; set; }
+    public List<Address>? Addresses { get; set; }
     public List<WishList>? WishListes { get; set; }
     public List<BookReview>? BookReviews { get; set; }
 }

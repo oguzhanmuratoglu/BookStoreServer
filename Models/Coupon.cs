@@ -13,11 +13,13 @@ public class Coupon
     public int? DiscountPercentage { get; set; }
     public decimal? DiscountAmount { get; set; }
     public string? DiscountCurrency { get; set; }
+    public bool IsActivated { get; set; } = true;
 }
 public class CouponConfiguration : IEntityTypeConfiguration<Coupon>
 {
     public void Configure(EntityTypeBuilder<Coupon> builder)
     {
         builder.Property(c => c.Code).IsRequired().HasMaxLength(50);
+        builder.HasIndex(c => c.Code).IsUnique();
     }
 }

@@ -8,6 +8,8 @@ public class BookListResponseDto
     public string MainImgUrl { get; set; }
     public string TitleTr { get; set; }
     public string TitleEn { get; set; }
+    public string SubTitleTr { get; set; }
+    public string SubTitleEn { get; set; }
     public List<PriceDto> Prices { get; set; }
     public string AuthorName { get; set; }
     public int AuthorId { get; set; }

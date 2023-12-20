@@ -15,12 +15,9 @@ public class Book
     public string SubTitleEn { get; set; }
     public string MainImgUrl { get; set; }
     public string ISBN { get; set; }
-    public int Quantity { get; set; }
-    public bool InStock { get; set; } = true;
+    public int VisitedCount { get; set; } = Random.Shared.Next(0, 500);
     public string DescriptionTr { get; set; }
     public string DescriptionEn { get; set; }
-    public bool IsActive { get; set; } = true;
-    public bool IsDeleted { get; set; } = false;
     public List<BookVariation> BookVariations { get; set; }
     public List<BookImgUrl> BookImgUrls { get; set; }
     public List<BookVideoUrl> BookVideoUrls { get; set; }
